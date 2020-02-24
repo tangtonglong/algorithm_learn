@@ -37,22 +37,6 @@ public class QuickSort {
 
             int privot = tmpStart;
             while (tmpStart < tmpEnd) {
-//                if (nums[end] >= nums[privot]) {
-//                    end--;
-//                } else {
-//                    int tmp = nums[privot];
-//                    nums[privot] = nums[end];
-//                    nums[end] = tmp;
-//                    privot = end;
-//                }
-//                if (nums[start] <= nums[privot]) {
-//                    start++;
-//                } else {
-//                    int tmp = nums[privot];
-//                    nums[privot] = nums[start];
-//                    nums[start] = tmp;
-//                    privot = start;
-//                }
                 while (tmpEnd >= start && tmpEnd >= tmpStart && nums[tmpEnd] >= nums[privot]) {
                     tmpEnd--;
                 }
