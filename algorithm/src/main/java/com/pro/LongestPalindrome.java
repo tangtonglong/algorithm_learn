@@ -35,12 +35,16 @@ public class LongestPalindrome {
         watch.start("mancher");
         System.out.println(mancher(a));
         watch.stop();
+        watch.start("dpV2");
+        System.out.println(longestPalindromeV2(a));
+        watch.stop();
         System.out.println(watch.prettyPrint());
     }
 
     /**
      * 暴力法
      * 超时
+     *
      * @param s
      * @return
      */
@@ -68,29 +72,30 @@ public class LongestPalindrome {
 
     /**
      * dp 算法
+     *
      * @param s
      * @return
      */
     public static String longestPalindrome(String s) {
-        if (s == null || s.length() == 0){
+        if (s == null || s.length() == 0) {
             return "";
-        }else if (s.length() == 1){
+        } else if (s.length() == 1) {
             return s;
         }
         boolean[][] dp = new boolean[s.length()][s.length()];
         String res = s.substring(0, 1);
         dp[s.length() - 1][s.length() - 1] = true;
-        for (int i = s.length() - 2; i>=0; i--){
+        for (int i = s.length() - 2; i >= 0; i--) {
             dp[i][i] = true;
-            for (int j = i + 1 ; j < s.length(); j++){
-                if ( j - i == 1){
+            for (int j = i + 1; j < s.length(); j++) {
+                if (j - i == 1) {
                     //aa,ab 类型
                     dp[i][j] = s.charAt(i) == s.charAt(j);
-                }else if (j - i > 1){
+                } else if (j - i > 1) {
                     //abc , aba 类型
-                    dp[i][j] = (s.charAt(i) == s.charAt(j) && dp[i+1][j-1]);
+                    dp[i][j] = (s.charAt(i) == s.charAt(j) && dp[i + 1][j - 1]);
                 }
-                if (dp[i][j] && j - i + 1 > res.length()){
+                if (dp[i][j] && j - i + 1 > res.length()) {
                     res = s.substring(i, j + 1);
                 }
             }
@@ -100,16 +105,42 @@ public class LongestPalindrome {
 
 
     public static String longestPalindromeV2(String s) {
-        return s;
+        if (s == null || s.length() == 0) {
+            return "";
+        } else if (s.length() == 1) {
+            return s;
+        }
+
+        boolean[][] dp = new boolean[s.length()][s.length()];
+        String palindrome = s.substring(0, 1);
+        int maxLength = 1;
+        for (int i = s.length() - 1; i >= 0; i--) {
+            dp[i][i] = true;
+            for (int j = i + 1; j < s.length(); j++) {
+                if (j - i == 1 && s.charAt(i) == s.charAt(j)) {
+                    dp[i][j] = true;
+                } else if (j - i > 1 && s.charAt(i) == s.charAt(j) && dp[i + 1][j - 1]) {
+                    dp[i][j] = true;
+                } else {
+                    dp[i][j] = false;
+                }
+                if (dp[i][j] && (j - i + 1 > maxLength)) {
+                    palindrome = s.substring(i, j + 1);
+                    maxLength = j - i + 1;
+                }
+            }
+        }
+        return palindrome;
     }
 
 
     /**
      * mancher算法
+     *
      * @param s
      * @return
      */
-    public static String mancher(String s){
+    public static String mancher(String s) {
         String T = preProcess(s);
         int n = T.length();
         int[] P = new int[n];
