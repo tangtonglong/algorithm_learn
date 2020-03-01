@@ -12,9 +12,9 @@ public class InsertSort {
 
         int[] numsb = InsertSort.insertSort(nums);
 
-//        for (int i = 0; i < numsb.length; i++){
-//            System.out.println(numsb[i]);
-//        }
+        for (int i = 0; i < numsb.length; i++){
+            System.out.println(numsb[i]);
+        }
     }
 
     /**
@@ -23,7 +23,6 @@ public class InsertSort {
      * @return
      */
     private static int[] insertSort(int[] nums) {
-
         for (int i = 0; i < nums.length - 1; i++){
             int tmpIndex = i + 1;
             int tmp = nums[tmpIndex];
@@ -32,16 +31,12 @@ public class InsertSort {
                     nums[j+1] = nums[j];
                     nums[j] = tmp;
                 }else {
-                    System.out.println("sss:" + nums[j]);
+                    System.out.println("stop:" + j);
                     break;
                 }
             }
 
         }
-        for (int i = 0; i < nums.length; i++){
-            System.out.println(nums[i]);
-        }
-
         return nums;
     }
 
