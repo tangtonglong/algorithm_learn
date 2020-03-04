@@ -36,7 +36,7 @@ public class ZeroOneBag {
                         v[i][j] = 0;
                     } else if (j >= weight[i] && (i - 1) >= 0) {
                         v[i][j] = Math.max(v[i - 1][j], v[i - 1][j - weight[i]] + value[i]);
-                    } else if (j >= weight[i]){
+                    } else if (j >= weight[i]) {
                         v[i][j] = value[i];
                     }
                 }

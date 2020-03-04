@@ -124,10 +124,11 @@ public class StringToInt {
 
     /**
      * 使用正则表达式
+     *
      * @param str
      * @return
      */
-    public static int myAtoiByReg(String str){
+    public static int myAtoiByReg(String str) {
         //清空字符串开头和末尾空格（这是trim方法功能，事实上我们只需清空开头空格）
         str = str.trim();
         //java正则表达式
@@ -135,13 +136,13 @@ public class StringToInt {
         Matcher m = p.matcher(str);
         int value = 0;
         //判断是否能匹配
-        if (m.find()){
+        if (m.find()) {
             //字符串转整数，溢出
             try {
                 value = Integer.parseInt(str.substring(m.start(), m.end()));
-            } catch (Exception e){
+            } catch (Exception e) {
                 //由于有的字符串"42"没有正号，所以我们判断'-'
-                value = str.charAt(0) == '-' ? Integer.MIN_VALUE: Integer.MAX_VALUE;
+                value = str.charAt(0) == '-' ? Integer.MIN_VALUE : Integer.MAX_VALUE;
             }
         }
         return value;

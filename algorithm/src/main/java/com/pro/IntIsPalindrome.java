@@ -95,7 +95,7 @@ public class IntIsPalindrome {
             reversedInt = reversedInt * 10 + x % 10;
             x = x / 10;
         }
-        return  reversedInt==x || reversedInt/10==x;
+        return reversedInt == x || reversedInt / 10 == x;
     }
 
     /**
@@ -109,15 +109,16 @@ public class IntIsPalindrome {
      * 可以采用 x % help / 10 的方式
      * 12321%10000==2321 可以将最高位去掉，然后 2321/10==232 可以将最低为去掉。
      * 最后不要忘记将 help/100。
-     *
+     * <p>
      * 作者：reedfan
      * 链接：https://leetcode-cn.com/problems/palindrome-number/solution/ji-bai-liao-99de-javayong-hu-dai-ma-you-ya-by-reed/
      * 来源：力扣（LeetCode）
      * 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+     *
      * @param x
      * @return
      */
-    public static boolean isPalindromeV4(int x){
+    public static boolean isPalindromeV4(int x) {
         if (x < 0) {
             return false;
         }
