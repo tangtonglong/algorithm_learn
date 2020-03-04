@@ -104,7 +104,7 @@ public class LongestCommonSubsequence {
         for (int i = 0; i < lcs.length; i++) {
             System.out.print(text1.charAt(i) + " :");
             for (int j = 0; j < lcs[0].length; j++) {
-                System.out.print(lcs[i][j]+" ");
+                System.out.print(lcs[i][j] + " ");
             }
             System.out.println();
         }
@@ -122,17 +122,17 @@ public class LongestCommonSubsequence {
                 j--;
             } else if (i - 1 >= 0 && j - 1 >= 0 && lcs[i - 1][j] == lcs[i][j - 1]) {
                 i--;
-            } else if (i == 0 && j >= 0 && lcs[i][j] > 0){
-                if (text1.charAt(i) == text2.charAt(j)){
+            } else if (i == 0 && j >= 0 && lcs[i][j] > 0) {
+                if (text1.charAt(i) == text2.charAt(j)) {
                     stringBuilder.append(text1.charAt(i));
                 }
                 j--;
-            }else if (i >= 0 && j==0 && lcs[i][j] > 0){
-                if (text1.charAt(i) == text2.charAt(j)){
+            } else if (i >= 0 && j == 0 && lcs[i][j] > 0) {
+                if (text1.charAt(i) == text2.charAt(j)) {
                     stringBuilder.append(text1.charAt(i));
                 }
                 i--;
-            }else {
+            } else {
                 break;
             }
         }
