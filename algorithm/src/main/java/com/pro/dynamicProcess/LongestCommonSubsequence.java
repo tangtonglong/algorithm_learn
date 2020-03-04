@@ -44,8 +44,8 @@ import org.springframework.util.StopWatch;
  */
 public class LongestCommonSubsequence {
     public static void main(String[] args) {
-        String text1 = "asdklaweioadjasdfwe";
-        String text2 = "qerkadfgahrskdfsdkakkdf";
+        String text1 = "bsbininmk";
+        String text2 = "jmjkbkjkv";
         StopWatch stopWatch = new StopWatch("longestCommonSubsequence");
         stopWatch.start("dp");
         System.out.println(longestCommonSubsequence(text1, text2));
@@ -73,13 +73,13 @@ public class LongestCommonSubsequence {
                     lcs[i][j] = lcs[i - 1][j - 1] + 1;
                 } else if (i == 0 || j == 0) {
                     if (i == 0 && j != 0) {
-                        if (text2.indexOf(text1.charAt(i)) >= 0) {
+                        if (text2.indexOf(text1.charAt(i)) >= 0 && text2.indexOf(text1.charAt(i)) <= j) {
                             lcs[i][j] = 1;
                         } else {
                             lcs[i][j] = 0;
                         }
                     } else if (i != 0 && j == 0) {
-                        if (text1.indexOf(text2.charAt(i)) >= 0) {
+                        if (text1.indexOf(text2.charAt(j)) >= 0 && text1.indexOf(text2.charAt(j)) <= i) {
                             lcs[i][j] = 1;
                         } else {
                             lcs[i][j] = 0;
@@ -96,10 +96,22 @@ public class LongestCommonSubsequence {
                 }
             }
         }
+        System.out.print("  :");
+        for (int i = 0; i < text2.length(); i++) {
+            System.out.print(text2.charAt(i) + " ");
+        }
+        System.out.println();
+        for (int i = 0; i < lcs.length; i++) {
+            System.out.print(text1.charAt(i) + " :");
+            for (int j = 0; j < lcs[0].length; j++) {
+                System.out.print(lcs[i][j]+" ");
+            }
+            System.out.println();
+        }
         StringBuilder stringBuilder = new StringBuilder();
         int i = text1.length() - 1;
         int j = text2.length() - 1;
-        while (i >= 0 && j >= 0) {
+        while (i >= 0 && j >= 0 && lcs[i][j] > 0) {
             if (text1.charAt(i) == text2.charAt(j)) {
                 stringBuilder.append(text1.charAt(i));
                 i--;
@@ -110,11 +122,21 @@ public class LongestCommonSubsequence {
                 j--;
             } else if (i - 1 >= 0 && j - 1 >= 0 && lcs[i - 1][j] == lcs[i][j - 1]) {
                 i--;
-            } else {
+            } else if (i == 0 && j >= 0 && lcs[i][j] > 0){
+                if (text1.charAt(i) == text2.charAt(j)){
+                    stringBuilder.append(text1.charAt(i));
+                }
+                j--;
+            }else if (i >= 0 && j==0 && lcs[i][j] > 0){
+                if (text1.charAt(i) == text2.charAt(j)){
+                    stringBuilder.append(text1.charAt(i));
+                }
+                i--;
+            }else {
                 break;
             }
         }
-        System.out.printf(stringBuilder.reverse().toString());
+        System.out.println("lcs: " + stringBuilder.reverse().toString());
         return lcs[text1.length() - 1][text2.length() - 1];
     }
 }
