@@ -13,7 +13,7 @@ public class CoinChange {
         System.out.println(stopWatch.prettyPrint());
     }
 
-    public static int coinChange(){
+    public static int coinChange() {
         return 0;
     }
 }
