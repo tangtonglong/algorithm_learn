@@ -1,5 +1,6 @@
 package com.pro;
 
+import java.sql.Timestamp;
 import java.util.HashMap;
 
 /**
@@ -61,4 +62,5 @@ public class TwoNumsSum {
         }
         throw new IllegalArgumentException("No two sum solution");
     }
+
 }
