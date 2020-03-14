@@ -21,11 +21,22 @@ public class ThreeNumsSumClosest {
         System.out.println(threeNumsSumClosest.threeSumClosest(nums, target));
         stopWatch.stop();
         stopWatch.start("threeSumClosestV2");
-        System.out.println(threeNumsSumClosest.threeSumClosest(nums, target));
+        System.out.println(threeNumsSumClosest.threeSumClosestV2(nums, target));
         stopWatch.stop();
         System.out.println(stopWatch.prettyPrint());
     }
 
+    private int threeSumClosestV2(int[] nums, int target) {
+        return 0;
+    }
+
+    /**
+     * 方法错误
+     *
+     * @param nums
+     * @param target
+     * @return
+     */
     public int threeSumClosest(int[] nums, int target) {
         if (nums == null || nums.length < 3){
             return 0;

@@ -57,7 +57,8 @@ public class LongestCommonSubsequence {
      * lcs(x(i),y(j))=
      * 1. lcs(x(i-1), y(j-1)) + 1 , x(i) = y(j)
      * 2. max( lcs(x(i-1), y(j)), lcs(x(i), y(j-1)) ) , x(i) != y(j)
-     * 3. 0 , i=-1或j=-1
+     *
+     * 时间复杂度 O(m*n), 空间复杂度 O(m*n)
      *
      * @param text1
      * @param text2
@@ -138,5 +139,17 @@ public class LongestCommonSubsequence {
         }
         System.out.println("lcs: " + stringBuilder.reverse().toString());
         return lcs[text1.length() - 1][text2.length() - 1];
+    }
+
+    /**
+     *
+     *
+     * 空间复杂度 O(), 空间复杂度 O()
+     * @param text1
+     * @param text2
+     * @return
+     */
+    public static int longestCommonSubsequence(String text1, String text2) {
+
     }
 }
