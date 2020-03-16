@@ -31,7 +31,6 @@ public class ThreeNumsSumClosest {
     }
 
     /**
-     * 方法错误
      *
      * @param nums
      * @param target
@@ -47,9 +46,6 @@ public class ThreeNumsSumClosest {
         for (int i = 0; i < nums.length - 2; i++) {
             int left = i + 1;
             int right = nums.length - 1;
-//            if (i > 0 && nums[i] == nums[i+1]){
-//                continue;
-//            }
             while (left < right){
                 int tmpSum = nums[i] + nums[left] + nums[right];
                 if (tmpSum == target){
@@ -57,6 +53,7 @@ public class ThreeNumsSumClosest {
                 }
                 int tmpDiv = Math.abs(tmpSum - target);
                 if (tmpDiv < closetDiv){
+                    closetDiv = tmpDiv;
                     closestSum = tmpSum;
                 }
                 if (tmpSum > target){

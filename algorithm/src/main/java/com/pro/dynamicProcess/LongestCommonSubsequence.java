@@ -149,7 +149,7 @@ public class LongestCommonSubsequence {
      * @param text2
      * @return
      */
-    public static int longestCommonSubsequence(String text1, String text2) {
-
+    public static int longestCommonSubsequenceV2(String text1, String text2) {
+        return 0;
     }
 }
