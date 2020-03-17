@@ -1,5 +1,7 @@
 package com.pro;
 
+import com.base.ListNode;
+
 /**
  * @author : ttl
  * 2020/2/24 17:11
@@ -74,12 +76,4 @@ public class AddTwoNumbers {
         return head;
     }
 
-    static class ListNode {
-        int val;
-        ListNode next;
-
-        ListNode(int x) {
-            val = x;
-        }
-    }
 }
