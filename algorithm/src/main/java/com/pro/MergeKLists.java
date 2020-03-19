@@ -43,7 +43,7 @@ public class MergeKLists {
 //        for (int i = 0;i< l2array.length ;i++){
 //            ListNode tmp = new ListNode(l2array[i]);
 //            tail.next = tmp;
-//            tail = tmp;
+//        tail = tail.next;
 //        }
         ListNode l3 = new ListNode(0);
         tail = l3;

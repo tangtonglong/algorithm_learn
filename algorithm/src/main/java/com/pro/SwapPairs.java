@@ -23,9 +23,17 @@ import org.springframework.util.StopWatch;
 public class SwapPairs {
 
     public static void main(String[] args){
+        ListNode tail = null;
+        ListNode l2 = new ListNode(1);
+        tail = l2;
+        for (int i = 0;i< 100 ;i++){
+            ListNode tmp = new ListNode(2*i);
+            tail.next = tmp;
+            tail = tail.next;
+        }
 
         ListNode l3 = new ListNode(0);
-        ListNode tail = l3;
+        tail = l3;
         for (int i = 0;i< 100 ;i++){
             ListNode tmp = new ListNode(2*i+1);
             tail.next = tmp;
@@ -34,15 +42,22 @@ public class SwapPairs {
 
         StopWatch stopWatch = new StopWatch("swapPairs");
         stopWatch.start("swapPairs");
-        ListNode listNode = swapPairs(l3);
+        ListNode listNode3 = swapPairs(l3);
         stopWatch.stop();
-        while (listNode != null){
-            System.out.println(listNode.val);
-            listNode = listNode.next;
+        stopWatch.start("swapPairsV2");
+        ListNode listNode2 = swapPairsV2(l2);
+        stopWatch.stop();
+        while (listNode3 != null){
+            System.out.println(listNode3.val);
+            listNode3 = listNode3.next;
         }
-
+        while (listNode2 != null){
+            System.out.println(listNode2.val);
+            listNode2 = listNode2.next;
+        }
         System.out.println(stopWatch.prettyPrint());
     }
+
 
     public static ListNode swapPairs(ListNode head){
         ListNode tmpHead = new ListNode(-256);
@@ -65,5 +80,34 @@ public class SwapPairs {
             }
         }
         return tmpHead.next;
+    }
+
+    /**
+     *
+     * @return
+     */
+    public static ListNode swapPairsV2(ListNode head){
+        ListNode tmpHead = new ListNode(-256);
+        tmpHead.next = head;
+        ListNode p = tmpHead;
+        if (head == null || head.next == null){
+            return head;
+        }
+        ListNode q = p.next.next;
+        recursion(p, q);
+        return tmpHead.next;
+    }
+
+    public static void recursion(ListNode p, ListNode q){
+        p.next.next = q.next;
+        q.next = p.next;
+        p.next = q;
+        p = p.next.next;
+        if (p.next != null && p.next.next != null){
+            q = p.next.next;
+            recursion(p, q);
+        }else {
+            return ;
+        }
     }
 }
