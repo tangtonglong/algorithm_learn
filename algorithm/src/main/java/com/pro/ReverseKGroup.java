@@ -41,7 +41,7 @@ public class ReverseKGroup {
 
     public static void main(String[] args){
         ListNode tail = null;
-        ListNode l2 = new ListNode(1);
+        ListNode l2 = new ListNode(-256);
         tail = l2;
         for (int i = 0;i< 4 ;i++){
             ListNode tmp = new ListNode(2*i);
@@ -102,6 +102,13 @@ public class ReverseKGroup {
             }
             q = p;
             p.next = tmp;
+        }
+        if (nodeStack.size() > 0){
+            ListNode tmpNode = null;
+            while (!nodeStack.isEmpty()){
+                tmpNode = nodeStack.pop();
+            }
+            p.next = tmpNode;
         }
         return tmpHead.next;
     }
