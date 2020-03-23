@@ -1,5 +1,7 @@
 package com.pro;
 
+import org.springframework.util.StopWatch;
+
 /**
  * 删除排序数组中的重复项
  * 给定一个排序数组，你需要在 原地 删除重复出现的元素，使得每个元素只出现一次，返回移除后数组的新长度。
@@ -47,6 +49,18 @@ package com.pro;
  */
 public class RemoveDuplicates {
 
+    public static void main(String[] args) {
+        int[] nums = new int[]{1,2,3,4,5,6,7,8,9,10};
+
+        StopWatch stopWatch = new StopWatch("reverseKGroup");
+        stopWatch.start("reverseKGroup");
+        removeDuplicates(nums);
+        stopWatch.stop();
+
+        System.out.println(stopWatch.prettyPrint());
+    }
+
+
     public static int removeDuplicates(int[] nums) {
         if (nums == null || nums.length == 0){
             return 0;
@@ -65,5 +79,6 @@ public class RemoveDuplicates {
                 q++;
             }
         }
+        return nums[0];
     }
 }
