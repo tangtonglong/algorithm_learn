@@ -50,7 +50,7 @@ import org.springframework.util.StopWatch;
 public class RemoveDuplicates {
 
     public static void main(String[] args) {
-        int[] nums = new int[]{1,2,3,4,5,6,7,8,9,10};
+        int[] nums = new int[]{1,2,3,4,4,5,6,7,8,9,10};
 
         StopWatch stopWatch = new StopWatch("reverseKGroup");
         stopWatch.start("reverseKGroup");
@@ -65,20 +65,19 @@ public class RemoveDuplicates {
         if (nums == null || nums.length == 0){
             return 0;
         }
-        int tmp = nums[0];
         int p = 0;
         int q = p + 1;
         while (p < nums.length && q < nums.length){
-
+            int tmp = nums[p];
             while (nums[q] == tmp){
                 q++;
             }
-            while (nums[q] != tmp && p > q){
-                nums[p] = nums[q];
-                p++;
-                q++;
+            if ((p + 1) < nums.length && q < nums.length && q - p > 1){
+                nums[p + 1] = nums[q];
             }
+            p++;
+            q++;
         }
-        return nums[0];
+        return p;
     }
 }
