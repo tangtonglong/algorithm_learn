@@ -55,21 +55,60 @@ import org.springframework.util.StopWatch;
 public class RemoveElement {
 
     public static void main(String[] args) {
-        int[] nums = new int[]{1,2,3,4,5,6,7,8,9,10};
-        int val = 10;
-
+//        int[] nums = new int[]{1,1,2,3,4,5,6,7,8,9,10,1,1};
+        int[] nums = new int[]{4,5};
+        int val = 5;
+        String a = "a";
+        System.out.println(a.indexOf("dfa"));
         StopWatch stopWatch = new StopWatch("reverseKGroup");
         stopWatch.start("reverseKGroup");
-        removeElement(nums, val);
+        int length = removeElementV2(nums, val);
         stopWatch.stop();
+        for (int i = 0; i < length; i++) {
+            System.out.println(nums[i]);
+        }
 
         System.out.println(stopWatch.prettyPrint());
     }
 
     public static int removeElement(int[] nums, int val) {
 
+        if (nums == null || nums.length == 0){
+            return 0;
+        }
+        int p = -1;
+        for (int i = 0; i < nums.length; i++) {
+            if (nums[i] != val){
+                p++;
+                nums[p] = nums[i];
+            }
+        }
+        return p+1;
+    }
 
+    public static int removeElementV2(int[] nums, int val) {
 
-        return val;
+        if (nums == null || nums.length == 0){
+            return 0;
+        }
+        if (nums.length == 1 && nums[0] == val){
+            return 0;
+        }
+        int p = 0;
+        int q = nums.length - 1;
+        while (p < q){
+            if (nums[p] == val){
+                while (p < q && nums[q] == val){
+                    q--;
+                }
+                if (p < q){
+                    nums[p] = nums[q];
+                }
+                q--;
+            }else {
+                p++;
+            }
+        }
+        return q+1;
     }
 }

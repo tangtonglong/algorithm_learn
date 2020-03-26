@@ -50,12 +50,21 @@ import org.springframework.util.StopWatch;
 public class RemoveDuplicates {
 
     public static void main(String[] args) {
-        int[] nums = new int[]{1,2,3,4,4,5,6,7,8,9,10};
+//        int[] nums = new int[]{10,10,11,13};
+        int[] nums = new int[]{10,10,11,12,12};
+//        int[] nums = new int[]{10,11};
+//        int[] nums = new int[]{1,2,3,4,5,6,7,8,9,10};
 
-        StopWatch stopWatch = new StopWatch("reverseKGroup");
-        stopWatch.start("reverseKGroup");
-        removeDuplicates(nums);
+        StopWatch stopWatch = new StopWatch("removeDuplicates");
+//        stopWatch.start("removeDuplicates");
+//        int leg = removeDuplicates(nums);
+//        stopWatch.stop();
+        stopWatch.start("removeDuplicatesV2");
+        int leg2 = removeDuplicates(nums);
         stopWatch.stop();
+        for (int i = 0; i < leg2; i++) {
+            System.out.println(nums[i]);
+        }
 
         System.out.println(stopWatch.prettyPrint());
     }
@@ -69,15 +78,35 @@ public class RemoveDuplicates {
         int q = p + 1;
         while (p < nums.length && q < nums.length){
             int tmp = nums[p];
-            while (nums[q] == tmp){
-                q++;
-            }
-            if ((p + 1) < nums.length && q < nums.length && q - p > 1){
+            if (nums[p] != nums[q]){
                 nums[p + 1] = nums[q];
+                p++;
             }
-            p++;
             q++;
         }
-        return p;
+        return p+1;
+    }
+
+    public static int removeDuplicatesV2(int[] nums){
+//        if (nums.length == 0) return 0;
+//        int i = 0;
+//        for (int j = 1; j < nums.length; j++) {
+//            if (nums[j] != nums[i]) {
+//                i++;
+//                nums[i] = nums[j];
+//            }
+//        }
+//        return i + 1;
+        if (nums == null || nums.length == 0){
+            return 0;
+        }
+        int i = 0;
+        for (int j = 1; j < nums.length; j++) {
+            if (nums[i] != nums[j]){
+                i++;
+                nums[i] = nums[j];
+            }
+        }
+        return i+1;
     }
 }
