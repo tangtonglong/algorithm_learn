@@ -24,8 +24,11 @@ public class TwoNumDivide {
             return 0;
         }
         if (divisor == -1 || divisor == 1){
-
+            //溢出处理
+//            return dividend;
         }
+        int tmpDividend = Math.abs(dividend);
+        int tmpDivisor = Math.abs(divisor);
 
     }
 }
