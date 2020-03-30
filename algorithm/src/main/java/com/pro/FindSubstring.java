@@ -34,6 +34,11 @@ import java.util.List;
  */
 public class FindSubstring {
 
+    public static void main(String[] args){
+
+        System.out.println(1000 * 60 * 60 * 24);
+    }
+
     public static List<Integer> findSubstring(String s, String[] words) {
 
         List resultList = new LinkedList<Integer>();
