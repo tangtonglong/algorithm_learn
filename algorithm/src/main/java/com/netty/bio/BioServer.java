@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
-import java.util.concurrent.Executor;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -32,6 +31,7 @@ public class BioServer {
                 final Socket socket = serverSocket.accept();
                 System.out.println("cllient linked");
                 newCachedThreadPool.execute(new Runnable() {
+                    @Override
                     public void run() {
                         //与客户端通信
                         handler(socket);
