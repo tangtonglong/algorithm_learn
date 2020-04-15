@@ -10,11 +10,13 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="Maven: com.alibaba:fastjson:1.2.62" level="project" />
+    <orderEntry type="library" name="Maven: commons-codec:commons-codec:1.14" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-core:5.1.9.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-jcl:5.1.9.RELEASE" level="project" />
+    <orderEntry type="library" name="Maven: com.alibaba:fastjson:1.2.67" level="project" />
     <orderEntry type="library" name="Maven: org.apache.rocketmq:rocketmq-common:4.7.0" level="project" />
     <orderEntry type="library" name="Maven: org.apache.rocketmq:rocketmq-remoting:4.7.0" level="project" />
-    <orderEntry type="library" name="Maven: com.alibaba:fastjson:1.2.62" level="project" />
     <orderEntry type="library" name="Maven: io.netty:netty-all:4.0.42.Final" level="project" />
     <orderEntry type="library" name="Maven: org.apache.rocketmq:rocketmq-logging:4.7.0" level="project" />
     <orderEntry type="library" name="Maven: io.netty:netty-tcnative-boringssl-static:1.1.33.Fork26" level="project" />

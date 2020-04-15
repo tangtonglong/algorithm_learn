@@ -19,7 +19,7 @@ public class SyncProducer {
     public static void main(String[] args) throws Exception {
         // 构造Producer
         DefaultMQProducer producer = new DefaultMQProducer("ProducerGroupName");
-        producer.setNamesrvAddr("10.10.34.216:9876");
+        producer.setNamesrvAddr("127.0.0.1:9876");
         // 初始化Producer，整个应用生命周期内，只需要初始化1次
         producer.start();
 

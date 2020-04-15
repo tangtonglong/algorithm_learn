@@ -1,5 +1,6 @@
 package com.pro;
 
+import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -56,7 +57,7 @@ public class MyTwitter {
 
     /** Retrieve the 10 most recent tweet ids in the user's news feed. Each item in the news feed must be posted by users who the user followed or by the user herself. Tweets must be ordered from most recent to least recent. */
     public List<Integer> getNewsFeed(int userId) {
-
+        return new LinkedList<Integer>();
     }
 
     /** Follower follows a followee. If the operation is invalid, it should be a no-op. */
