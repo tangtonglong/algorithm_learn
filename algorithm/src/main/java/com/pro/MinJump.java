@@ -26,17 +26,17 @@ public class MinJump {
 
     public static void main(String[] args) {
         int[] nums = new int[]{90,5,0,0,0,4,0,0,0};
-//        int[] nums = new int[]{1,2,3};
+//        int[] nums = new int[]{2,3,1,1,4};
 
         StopWatch stopWatch = new StopWatch("canJump");
         stopWatch.start("jump");
         System.out.println(jump(nums));
         stopWatch.stop();
         stopWatch.start("jumpV2");
-        System.out.println(jump(nums));
+        System.out.println(jumpV2(nums));
         stopWatch.stop();
         stopWatch.start("jumpV3");
-        System.out.println(jump(nums));
+        System.out.println(jumpV3(nums));
         stopWatch.stop();
         System.out.println(stopWatch.prettyPrint());
     }
@@ -88,6 +88,35 @@ public class MinJump {
         if (nums.length == 1){
             return 0;
         }
-        return 1;
+        int count = 0;
+        int start = 0;
+        int end = 1;
+        while (start < nums.length && end < nums.length){
+            int tmpIndex = end;
+            for (int i = start; i < end; i++) {
+                if (nums[i] + i >= nums.length - 1){
+                    return count++;
+                }
+                tmpIndex = Math.max(tmpIndex, nums[i] + i);
+            }
+            count++;
+            start = end;
+            end = tmpIndex + 1;
+        }
+        return count;
+    }
+
+    public static int jumpV3(int[] nums){
+        int count = 0;
+        int endIndex = 0;
+        int nextEnd = 0;
+        for (int i = 0; i < nums.length - 1; i++) {
+            nextEnd = Math.max(nums[i] + i, nextEnd);
+            if (i == endIndex){
+                endIndex = nextEnd;
+                count++;
+            }
+        }
+        return count;
     }
 }
