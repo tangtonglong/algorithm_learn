@@ -53,14 +53,15 @@ public class CanReach {
 
     public static void main(String[] args) {
 //        int[] nums = new int[]{90,5,0,0,0,4,0,0,0};
-        int[] nums = new int[]{3, 0, 2, 1, 2};
-        int start = 2;
+//        int[] nums = new int[]{3, 0, 2, 1, 2};
+        int[] nums = new int[]{0,1};
+        int start = 1;
         StopWatch stopWatch = new StopWatch("canReach");
         stopWatch.start("canReach");
         System.out.println(canReach(nums, start));
         stopWatch.stop();
         stopWatch.start("canReachV2");
-        System.out.println(canReach(nums, start));
+        System.out.println(canReachV2(nums, start));
         stopWatch.stop();
         stopWatch.start("canReachV3");
         System.out.println(canReach(nums, start));
@@ -100,9 +101,21 @@ public class CanReach {
     public static boolean canReachV2(int[] arr, int start) {
 
         Set<Integer> reachedIndexSet = new HashSet<>();
-        Stack<Integer> rootStack = new Stack<>();
-        int tmpStart = start;
-
+        return digui(arr, start, reachedIndexSet);
     }
 
+    public static boolean digui(int[] arr, int pos, Set reachedIndexSet){
+        if (pos > arr.length - 1){
+            return false;
+        }else if (pos < 0){
+            return false;
+        }else if (arr[pos] == 0){
+            return true;
+        }else if (reachedIndexSet.contains(pos)){
+            return false;
+        }else {
+            reachedIndexSet.add(pos);
+            return digui(arr, pos + arr[pos], reachedIndexSet) || digui(arr, pos - arr[pos], reachedIndexSet);
+        }
+    }
 }
