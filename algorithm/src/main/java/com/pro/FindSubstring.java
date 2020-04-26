@@ -1,5 +1,8 @@
 package com.pro;
 
+import org.springframework.util.StopWatch;
+
+import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -33,16 +36,52 @@ import java.util.List;
  * @return
  */
 public class FindSubstring {
-
     public static void main(String[] args){
-
+        String s = "abababab";
+        String[] words = {"a","b","a"};
+        StopWatch stopWatch = new StopWatch("waysToChange");
+        stopWatch.start("waysToChangeV6");
+        System.out.println(findSubstring(s, words));
+        stopWatch.stop();
+        System.out.println(stopWatch.prettyPrint());
         System.out.println(1000 * 60 * 60 * 24);
     }
 
     public static List<Integer> findSubstring(String s, String[] words) {
 
         List resultList = new LinkedList<Integer>();
-
+        if (words == null || words.length == 0){
+            return resultList;
+        }
+        int totalLength = words[0].length() * words.length;
+        if (s == null || s.length() == 0 || totalLength > s.length()){
+            return resultList;
+        }
+        Arrays.sort(words);
+        StringBuilder stringBuilder = new StringBuilder();
+        for (int i = 0; i < words.length; i++) {
+            stringBuilder.append(words[i]);
+        }
+        String wordStr = stringBuilder.toString();
+        for (int i = 0; i <= s.length() - totalLength; i++) {
+            String tmp = s.substring(i, i + totalLength);
+            if (splitAndMerge(tmp, words[0].length()).equals(wordStr)){
+                resultList.add(i);
+            }
+        }
         return resultList;
+    }
+
+    public static String splitAndMerge(String strs, int len){
+        String[] tmp = new String[strs.length()/len];
+        for (int i = 0; i*len <= strs.length() - len; i++) {
+            tmp[i] = strs.substring(i*len, i*len + len);
+        }
+        Arrays.sort(tmp);
+        StringBuilder stringBuilder = new StringBuilder();
+        for (int i = 0; i < tmp.length; i++) {
+            stringBuilder.append(tmp[i]);
+        }
+        return stringBuilder.toString();
     }
 }

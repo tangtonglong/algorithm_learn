@@ -25,7 +25,7 @@ public class NIOFileChannel {
             ByteBuffer byteBuffer = ByteBuffer.allocate(1024);
             byteBuffer.put(str.getBytes());
             //对buffer进行反转
-//            byteBuffer.flip();
+            byteBuffer.flip();
 
             fileChannel.write(byteBuffer);
             fileOutputStream.close();
