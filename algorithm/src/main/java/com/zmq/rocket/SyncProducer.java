@@ -1,4 +1,4 @@
-package com.mq.rocket;
+package com.zmq.rocket;
 
 import org.apache.rocketmq.client.producer.DefaultMQProducer;
 import org.apache.rocketmq.client.producer.SendResult;

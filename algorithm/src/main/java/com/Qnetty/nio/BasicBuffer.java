@@ -1,8 +1,7 @@
-package com.netty.nio;
+package com.Qnetty.nio;
 
 import java.nio.Buffer;
 import java.nio.IntBuffer;
-import java.nio.channels.Channel;
 
 /**
  * @author : tangtonglong

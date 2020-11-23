@@ -96,5 +96,6 @@ public class MincostTickets {
 
             }
         }
+        return 1;
     }
 }
